@@ -115,9 +115,12 @@ class MarginalPlot:
             elif self.right_type == 'half-violin':
                 center = i + 1
                 
-                # 1. Boxplot at center
-                bplot = self.ax_right.boxplot(y, positions=[center], widths=0.2, patch_artist=True,
-                                              showfliers=False, vert=True)
+                # 1. Boxplot (Left offset) with outliers
+                flierprops = dict(marker='o', markerfacecolor=color, markersize=5,
+                                  linestyle='none', markeredgecolor='none')
+                
+                bplot = self.ax_right.boxplot(y, positions=[center - 0.1], widths=0.15, patch_artist=True,
+                                              showfliers=True, flierprops=flierprops, vert=True)
                 for patch in bplot['boxes']:
                     patch.set_facecolor('white')
                     patch.set_edgecolor(color)
@@ -125,17 +128,13 @@ class MarginalPlot:
                 for element in ['whiskers', 'caps', 'medians']:
                     plt.setp(bplot[element], color=color, linewidth=1.5)
                     
-                # 2. Scatter (Outliers / Rain) on the left
-                jitter = np.random.uniform(-0.1, 0.1, size=len(y))
-                self.ax_right.scatter(center - 0.25 + jitter, y, color=color, alpha=0.7, s=15, edgecolors='none')
-                
-                # 3. Half-violin (Cloud) on the right
+                # 2. Half-violin (Cloud) on the right
                 kde = gaussian_kde(y)
                 y_grid = np.linspace(y.min() - 0.5 * y.std(), y.max() + 0.5 * y.std(), 100)
                 density = kde(y_grid)
                 # Normalize density height to fit in the given space
                 density = density / density.max() * 0.4
-                self.ax_right.fill_betweenx(y_grid, center + 0.15, center + 0.15 + density, color=color, alpha=0.4, edgecolor=color, linewidth=1.5)
+                self.ax_right.fill_betweenx(y_grid, center + 0.05, center + 0.05 + density, color=color, alpha=0.4, edgecolor=color, linewidth=1.5)
                 
                 # set x-ticks properly if we used categorical placement
                 self.ax_right.set_xticks(np.arange(1, self.num_groups + 1))
