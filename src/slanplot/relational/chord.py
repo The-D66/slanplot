@@ -109,13 +109,13 @@ class ChordDiagram:
             if 0 < rot < 180:
                 rot_ang = -(0.5*np.pi - theta3) / np.pi * 180.0
                 self.name_f_hdl[i] = self.ax.text(np.cos(theta3)*self.l_radius, np.sin(theta3)*self.l_radius, 
-                                                  self.row_name[i], fontsize=12, fontname='Arial', 
+                                                  self.row_name[i], fontsize=12, 
                                                   ha='center', va='center', rotation=rot_ang)
                 rotation_f[i] = rot_ang
             else:
                 rot_ang = -(1.5*np.pi - theta3) / np.pi * 180.0
                 self.name_f_hdl[i] = self.ax.text(np.cos(theta3)*self.l_radius, np.sin(theta3)*self.l_radius, 
-                                                  self.row_name[i], fontsize=12, fontname='Arial', 
+                                                  self.row_name[i], fontsize=12, 
                                                   ha='center', va='center', rotation=rot_ang)
                 rotation_f[i] = rot_ang
 
@@ -151,13 +151,13 @@ class ChordDiagram:
             if 0 < rot < 180:
                 rot_ang = -(0.5*np.pi - theta3) / np.pi * 180.0
                 self.name_t_hdl[j] = self.ax.text(np.cos(theta3)*self.l_radius, np.sin(theta3)*self.l_radius, 
-                                                  self.col_name[j], fontsize=12, fontname='Arial', 
+                                                  self.col_name[j], fontsize=12, 
                                                   ha='center', va='center', rotation=rot_ang)
                 rotation_t[j] = rot_ang
             else:
                 rot_ang = -(1.5*np.pi - theta3) / np.pi * 180.0
                 self.name_t_hdl[j] = self.ax.text(np.cos(theta3)*self.l_radius, np.sin(theta3)*self.l_radius, 
-                                                  self.col_name[j], fontsize=12, fontname='Arial', 
+                                                  self.col_name[j], fontsize=12, 
                                                   ha='center', va='center', rotation=rot_ang)
                 rotation_t[j] = rot_ang
 

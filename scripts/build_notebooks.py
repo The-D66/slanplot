@@ -7,7 +7,7 @@ def create_notebook(title, description, scripts, out_path):
     nb.cells.append(new_markdown_cell(f"# {title}\n\n{description}"))
     
     for script_name in scripts:
-        with open(os.path.join('examples', script_name), 'r', encoding='utf-8') as f:
+        with open(os.path.join('examples/scripts', script_name), 'r', encoding='utf-8') as f:
             content = f.read()
         
         # Remove Agg backend line and savefig logic for notebook friendliness

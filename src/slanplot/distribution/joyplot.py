@@ -73,7 +73,7 @@ class JoyPlot:
         self.ax.spines['left'].set_visible(False)
         self.ax.yaxis.grid(True, linestyle='-', color='gray', alpha=0.3)
         self.ax.set_yticks([i * self.sep for i in range(1, self.ridge_num + 1)])
-        self.ax.set_yticklabels([f"Class-{i}" for i in range(1, self.ridge_num + 1)], fontname='Cambria', fontsize=13)
+        self.ax.set_yticklabels([f"Class-{i}" for i in range(1, self.ridge_num + 1)], fontsize=13)
         self.ax.tick_params(axis='x', direction='out', labelsize=13)
         self.ax.tick_params(axis='y', length=0)
         
