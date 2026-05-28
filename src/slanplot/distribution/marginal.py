@@ -119,7 +119,7 @@ class MarginalPlot:
                 flierprops = dict(marker='o', markerfacecolor=color, markersize=5,
                                   linestyle='none', markeredgecolor='none')
                 
-                bplot = self.ax_right.boxplot(y, positions=[center - 0.1], widths=0.15, patch_artist=True,
+                bplot = self.ax_right.boxplot(y, positions=[center - 0.15], widths=0.3, patch_artist=True,
                                               showfliers=True, flierprops=flierprops, vert=True)
                 for patch in bplot['boxes']:
                     patch.set_facecolor('white')
