@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import gaussian_kde
 from matplotlib.patches import Ellipse
 import matplotlib.transforms as transforms
 from ..core.colors import SlandarerColormaps
@@ -24,6 +25,10 @@ class MarginalPlot:
             self.labels = [f'Group {i+1}' for i in range(self.num_groups)]
         else:
             self.labels = labels
+            
+        # 设置全局字体为 Times New Roman
+        plt.rcParams['font.family'] = 'Times New Roman'
+        plt.rcParams['mathtext.fontset'] = 'stix'
 
         self.fig = plt.figure(figsize=figsize)
         gs = self.fig.add_gridspec(3, 3, width_ratios=[4, 1, 0.1], height_ratios=[0.1, 1, 4], 
@@ -105,11 +110,38 @@ class MarginalPlot:
                 self.ax_top.vlines(x, ymin=y_min, ymax=y_max, color=color, alpha=0.4, linewidth=1)
 
             # --- Right Plot ---
-            # Right Plot (如果是 hist，跳过这里在循环外绘制)
             if self.right_type == 'kd-hist':
                 sns.histplot(y=y, ax=self.ax_right, color=color, kde=True, stat="density", fill=True, alpha=0.3, line_kws={'linewidth': 2})
             elif self.right_type == 'half-violin':
-                sns.kdeplot(y=y, ax=self.ax_right, color=color, fill=True, alpha=0.5)
+                center = i + 1
+                
+                # 1. Boxplot at center
+                bplot = self.ax_right.boxplot(y, positions=[center], widths=0.2, patch_artist=True,
+                                              showfliers=False, vert=True)
+                for patch in bplot['boxes']:
+                    patch.set_facecolor('white')
+                    patch.set_edgecolor(color)
+                    patch.set_linewidth(1.5)
+                for element in ['whiskers', 'caps', 'medians']:
+                    plt.setp(bplot[element], color=color, linewidth=1.5)
+                    
+                # 2. Scatter (Outliers / Rain) on the left
+                jitter = np.random.uniform(-0.1, 0.1, size=len(y))
+                self.ax_right.scatter(center - 0.25 + jitter, y, color=color, alpha=0.7, s=15, edgecolors='none')
+                
+                # 3. Half-violin (Cloud) on the right
+                kde = gaussian_kde(y)
+                y_grid = np.linspace(y.min() - 0.5 * y.std(), y.max() + 0.5 * y.std(), 100)
+                density = kde(y_grid)
+                # Normalize density height to fit in the given space
+                density = density / density.max() * 0.4
+                self.ax_right.fill_betweenx(y_grid, center + 0.15, center + 0.15 + density, color=color, alpha=0.4, edgecolor=color, linewidth=1.5)
+                
+                # set x-ticks properly if we used categorical placement
+                self.ax_right.set_xticks(np.arange(1, self.num_groups + 1))
+                # remove background grid on x
+                self.ax_right.xaxis.grid(False)
+
             elif self.right_type == 'rug':
                 h = 1.0 / self.num_groups
                 x_min = i * h + h * 0.1
