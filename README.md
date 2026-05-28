@@ -2,9 +2,9 @@
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.9+-green.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![License](https://img.shields.io/badge/license-BSD--3--Clause-green.svg)
 
-`slanplot` 是一款高级且极具美感的 Python 数据可视化库。它复刻并致敬了由 *slandarer* 创作的顶级 MATLAB 科研绘图系列，旨在打破 MATLAB 与 Python 之间的视觉壁垒，让 Python 的数据科学及学术科研生态同样能够轻松生成具有极致审美、符合顶级期刊出版标准的绝美图表。
+`slanplot` 是一款高级且极具美感的 Python 数据可视化库。它复刻并致敬了由 [slandarer](https://github.com/slandarer) 创作的顶级 MATLAB 科研绘图系列，旨在打破 MATLAB 与 Python 之间的视觉壁垒，让 Python 的数据科学及学术科研生态同样能够轻松生成具有极致审美、符合顶级期刊出版标准的绝美图表。
 
 ## ✨ 核心特性
 
@@ -82,4 +82,4 @@ plt.show()
 
 ## 📜 许可证 (License)
 
-本项目采用 MIT License 开源，详见 [LICENSE](./LICENSE) 文件。
+本项目严格遵循原作者 Zhaoxu Liu / slandarer 的开源要求，继承了其原版仓库的 **BSD 3-Clause License** 协议进行开源，详见 [LICENSE](./LICENSE) 文件。在此特别致谢并向 [slandarer](https://github.com/slandarer) 先生在科研可视化领域作出的卓越贡献致以最高敬意！
