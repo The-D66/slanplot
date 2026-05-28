@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# IDEs
+.idea/
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets
+secret.json
