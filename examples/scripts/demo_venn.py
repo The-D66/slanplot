@@ -23,7 +23,7 @@ def main():
     vd5.draw()
     axes[1].set_title("5 Sets")
     
-    plt.savefig('/Users/the-d/.gemini/antigravity/brain/d52f437c-6ca0-4617-8907-efca4c6f0b8c/demo_venn.png', dpi=300, bbox_inches='tight')
+    plt.savefig("output_venn.png", dpi=300, bbox_inches='tight')
     print("Saved demo_venn.png")
 
 if __name__ == "__main__":

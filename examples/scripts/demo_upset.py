@@ -34,5 +34,5 @@ ax_intersections = res['intersections']
 for c in ax_intersections.containers:
     ax_intersections.bar_label(c, label_type='edge', padding=2)
 
-plt.savefig('/Users/the-d/.gemini/antigravity/brain/d52f437c-6ca0-4617-8907-efca4c6f0b8c/demo1_upset.png', dpi=300, bbox_inches='tight')
+plt.savefig("output_upset.png", dpi=300, bbox_inches='tight')
 print("Updated demo1_upset.png")

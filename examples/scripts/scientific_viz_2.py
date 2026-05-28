@@ -115,7 +115,7 @@ def main():
     ax.text(x_bracket+0.5, (data['SMK'][0][-1] + data['SMK+abx'][0][-1])/2, '****', ha='left', va='center', rotation=-90, fontsize=12)
 
     plt.tight_layout()
-    plt.savefig('/Users/the-d/.gemini/antigravity/brain/d52f437c-6ca0-4617-8907-efca4c6f0b8c/demo_scientific_viz_2.png', dpi=300, bbox_inches='tight')
+    plt.savefig("output_scientific_viz_2.png", dpi=300, bbox_inches='tight')
     print("Saved demo_scientific_viz_2.png")
 
 if __name__ == "__main__":

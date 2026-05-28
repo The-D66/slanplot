@@ -103,7 +103,7 @@ def main():
     ax2.legend(handles=handles, loc='lower right', frameon=True, edgecolor='black')
     
     plt.tight_layout()
-    plt.savefig('/Users/the-d/.gemini/antigravity/brain/d52f437c-6ca0-4617-8907-efca4c6f0b8c/demo_scientific_viz_1.png', dpi=300, bbox_inches='tight')
+    plt.savefig("output_scientific_viz_1.png", dpi=300, bbox_inches='tight')
     print("Saved demo_scientific_viz_1.png")
 
 if __name__ == "__main__":
