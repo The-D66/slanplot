@@ -20,6 +20,6 @@ SK.draw()
 
 SK.set_label_location(1, 'left')
 
-plt.title("SSankey plot via slanplot")
+plt.title("SSankey plot (Original design by slandarer)")
 plt.savefig('output_sankey.png', dpi=300, bbox_inches='tight')
 print("Saved output_sankey.png using slanplot module!")

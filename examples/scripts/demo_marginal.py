@@ -26,7 +26,7 @@ if __name__ == "__main__":
     
     mp.ax_main.set_xlabel('Thank U very much for your five-star review !!!', fontsize=12)
     mp.ax_main.set_ylabel('Rate me please.', fontsize=12)
-    mp.ax_top.set_title('Marginal plot via slanplot', fontsize=14)
+    mp.ax_top.set_title('Marginal plot (Original design by slandarer)', fontsize=14)
     mp.ax_right.set_xlabel('Original design by slandarer', fontsize=12)
     
     plt.savefig('output_marginal.png', dpi=300, bbox_inches='tight')
